@@ -31,6 +31,7 @@ import time
 
 import objc
 from PyObjCTools import AppHelper
+import libdispatch
 
 from ..interfaces import Provider
 from ..platform import get_provider
@@ -237,8 +238,12 @@ class CoreBluetoothProvider(Provider):
         """
         # Setup the central manager and its delegate.
         self._central_manager = CBCentralManager.alloc()
+        dispatch_queue = libdispatch.dispatch_queue_create(b'q', None)
+
         self._central_manager.initWithDelegate_queue_options_(self._central_delegate,
-                                                              None, None)
+                                                                          dispatch_queue, None)
+        #self._central_manager.initWithDelegate_queue_options_(self._central_delegate,
+                                                              #None, None)
         # Add any connected devices to list of known devices.
 
 
