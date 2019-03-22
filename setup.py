@@ -16,7 +16,7 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-setup(name              = 'bricknil-Adafruit_BluefruitLE',
+setup(name              = 'bluebrick-Adafruit_BluefruitLE',
       version           = '0.9.13',
       author            = 'Virantha Ekanayake',
       author_email      = 'virantha@gmail.com',
