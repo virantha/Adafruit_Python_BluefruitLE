@@ -97,6 +97,8 @@ class CoreBluetoothDevice(Device):
         # name from advertisement data.
         if 'kCBAdvDataServiceUUIDs' in advertised:
             self._advertised = self._advertised + map(cbuuid_to_uuid, advertised['kCBAdvDataServiceUUIDs'])
+            if 'kCBAdvDataManufacturerData' in advertised:
+                self._advertised = self._advertised + list(advertised['kCBAdvDataManufacturerData'])
 
     def _characteristics_discovered(self, service):
         """Called when GATT characteristics have been discovered."""
